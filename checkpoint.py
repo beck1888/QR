@@ -20,7 +20,7 @@ def welcome(name, code):
 def denied(code):
     with open("logs.txt", "a") as f:
         f.write(f"{get_formatted_time()} | DENIED | ATTEMPTED CODE: {code}\n")
-    playsound.playsound("deny.mp3", block=False)
+    playsound.playsound("deny.wav", block=False)
 
 def scan_qr_code_from_camera(data_dict):
     # Initialize the video capture
