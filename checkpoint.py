@@ -1,9 +1,8 @@
 import cv2
 import json
-from time import time #, sleep
+from time import time
 import playsound
 import datetime
-# import easygui
 
 def change_status(employee):
     # True = in
@@ -77,7 +76,7 @@ def scan_qr_code_from_camera(data_dict):
 
             current_time = time()
             # Check if we are within the hold time after processing a QR code
-            if last_valid_data and (current_time - qr_code_processed_time < processing_hold_time):
+            if last_valid_data and current_time - qr_code_processed_time < processing_hold_time:
                 continue  # Skip processing new QR codes
 
             if points is not None and len(points) == 1:

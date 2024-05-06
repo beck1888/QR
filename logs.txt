@@ -104,3 +104,23 @@
 
 
 
+05/06/2024 | 09:24 AM | Checked in | Jake Rodgers
+05/06/2024 | 09:24 AM | Checked in | Alice Caldwell
+05/06/2024 | 09:24 AM | DENIED | ATTEMPTED CODE: 593-000-111-493
+05/06/2024 | 09:25 AM | Checked out | Jake Rodgers
+05/06/2024 | 09:25 AM | Checked out | Alice Caldwell
+05/06/2024 | 09:25 AM | Checked in | Alice Caldwell
+05/06/2024 | 09:26 AM | Checked out | Alice Caldwell
+05/06/2024 | 09:29 AM | Checked in | Bob Smith
+05/06/2024 | 09:29 AM | Checked in | Alice Caldwell
+05/06/2024 | 09:30 AM | Checked out | Bob Smith
+05/06/2024 | 09:30 AM | DENIED | ATTEMPTED CODE: 593-000-111-493
+05/06/2024 | 10:56 AM | Checked out | Alice Caldwell
+05/06/2024 | 11:05 AM | Checked in | Alice Caldwell
+05/06/2024 | 11:05 AM | Checked out | Alice Caldwell
+05/06/2024 | 11:06 AM | Checked in | Bob Smith
+05/06/2024 | 11:08 AM | Checked out | Bob Smith
+05/06/2024 | 11:09 AM | Checked in | Bob Smith
+05/06/2024 | 11:09 AM | Checked in | Alice Caldwell
+05/06/2024 | 11:09 AM | Checked out | Bob Smith
+05/06/2024 | 11:09 AM | Checked out | Alice Caldwell
