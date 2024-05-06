@@ -3,6 +3,7 @@ import json
 from time import sleep, time
 import playsound
 import datetime
+import easygui
 
 def get_formatted_time():
     # Get current time
@@ -70,6 +71,10 @@ def scan_qr_code_from_camera(data_dict):
                         message = f"WELCOME: {data_dict[last_valid_data]}"
                         frame[:] = (0, 255, 0)  # Green background
                         welcome(data_dict[last_valid_data], last_valid_data)  # Call the welcome function
+                    elif last_valid_data == "000-000-000-000":
+                        message = "CLEARING CACHE..."
+                        playsound.playsound("reset.mp3", False)
+                        frame[:] = (255, 100, 50)  # Green background
                     else:
                         message = "DENIED"
                         frame[:] = (0, 0, 255)  # Red background
@@ -85,12 +90,17 @@ def scan_qr_code_from_camera(data_dict):
             cv2.imshow('ID Scanner', frame)
 
             # Exit the loop with 'q' key
-            if cv2.waitKey(1) & 0xFF == ord('q'):
+            # Handle key presses
+            key = cv2.waitKey(1) & 0xFF
+            if key == ord('q'):
                 break
-
-            # # Clear list
-            # if cv2.waitKey(1) & 0xFF == ord('r'):
+            # elif key == ord('r'):
             #     last_valid_data = "" # allows a re-scan
+            #     easygui.msgbox('Scanner reset. All IDs can now be scanned again.')
+
+            #     playsound.playsound("reset.mp3")
+
+
     finally:
         # When everything done, release the capture and destroy all windows
         cap.release()
