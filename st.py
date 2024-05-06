@@ -11,7 +11,7 @@ with open('employee_status.json', 'r') as f:
 
 for key in statuses.keys():
     if statuses[key] is True:
-        is_in.append(key)
+        is_in.append(key) 
     else:
         is_out.append(key)
 

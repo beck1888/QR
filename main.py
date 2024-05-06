@@ -7,7 +7,7 @@ import datetime
 def change_status(employee):
     # True = in
     # False = out
-    with open("employee_status.json", "r") as f:
+    with open("data/employee_status.json", "r") as f:
         statuses = json.load(f)
 
     if statuses[employee] is True:
@@ -19,12 +19,12 @@ def change_status(employee):
         message = f"Hello: {employee}"
         log = "Checked in"
 
-    with open("employee_status.json", "w") as f:
+    with open("data/employee_status.json", "w") as f:
         json.dump(statuses, f, indent=4)
 
-    with open("logs.txt", "a") as f:
+    with open("data/logs.txt", "a") as f:
         f.write(f"{get_formatted_time()} | {log} | {employee}\n")
-    playsound.playsound("allow.wav", block=False)
+    playsound.playsound("audio/allow.wav", block=False)
 
     return message
 
@@ -37,9 +37,9 @@ def get_formatted_time():
     return formatted_time
 
 def denied(code):
-    with open("logs.txt", "a") as f:
+    with open("data/logs.txt", "a") as f:
         f.write(f"{get_formatted_time()} | DENIED | ATTEMPTED CODE: {code}\n")
-    playsound.playsound("deny.wav", block=False)
+    playsound.playsound("audio/deny.wav", block=False)
 
 def scan_qr_code_from_camera(data_dict):
     # Initialize the video capture
@@ -91,7 +91,7 @@ def scan_qr_code_from_camera(data_dict):
                         message = change_status(data_dict[last_valid_data])  # Call the check in/ check out function
                     elif last_valid_data == "000-000-000-000":
                         message = "CLEARING CACHE..."
-                        playsound.playsound("reset.mp3", False)
+                        playsound.playsound("audio/reset.mp3", False)
                         frame[:] = (255, 100, 50)  # Green background
                     else:
                         message = "NOT AN EMPLOYEE"
@@ -108,16 +108,9 @@ def scan_qr_code_from_camera(data_dict):
             cv2.imshow('Time Clock', frame)
 
             # Exit the loop with 'q' key
-            # Handle key presses
             key = cv2.waitKey(1) & 0xFF
             if key == ord('q'):
                 break
-            # elif key == ord('r'):
-            #     last_valid_data = "" # allows a re-scan
-            #     easygui.msgbox('Scanner reset. All IDs can now be scanned again.')
-
-            #     playsound.playsound("reset.mp3")
-
 
     finally:
         # When everything done, release the capture and destroy all windows
@@ -125,7 +118,7 @@ def scan_qr_code_from_camera(data_dict):
         cv2.destroyAllWindows()
 
 # Load the dictionary to look up QR code data
-with open("identities.json", "r") as f:
+with open("data/identities.json", "r") as f:
     data_dict = json.load(f)
 
 # Start the camera and QR code detection with dictionary data
