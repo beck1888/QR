@@ -88,3 +88,19 @@
 05/04/2024 | 09:21 PM | ALLOWED | Jake Rodgers | CODE: 840-592-492-482
 05/04/2024 | 09:21 PM | ALLOWED | Alice Caldwell | CODE: 482-612-004-586
 05/04/2024 | 09:21 PM | DENIED | ATTEMPTED CODE: 583-010-885-535
+05/06/2024 | 07:36 AM | Checked in | Alice Caldwell
+05/06/2024 | 07:36 AM | Checked in | Jake Rodgers
+05/06/2024 | 07:36 AM | DENIED | ATTEMPTED CODE: 583-010-885-535
+05/06/2024 | 07:36 AM | Checked in | Blake Carter
+05/06/2024 | 07:37 AM | Checked out | Blake Carter
+05/06/2024 | 07:37 AM | Checked out | Alice Caldwell
+05/06/2024 | 07:37 AM | Checked out | Jake Rodgers
+05/06/2024 | 07:38 AM | DENIED | ATTEMPTED CODE: 583-010-885-535
+
+
+
+
+*clock in/out mode*
+
+
+

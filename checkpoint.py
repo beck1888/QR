@@ -1,9 +1,33 @@
 import cv2
 import json
-from time import sleep, time
+from time import time #, sleep
 import playsound
 import datetime
-import easygui
+# import easygui
+
+def change_status(employee):
+    # True = in
+    # False = out
+    with open("employee_status.json", "r") as f:
+        statuses = json.load(f)
+
+    if statuses[employee] is True:
+        statuses[employee] = False
+        message = f"Goodbye: {employee}"
+        log = "Checked out"
+    elif statuses[employee] is False:
+        statuses[employee] = True
+        message = f"Hello: {employee}"
+        log = "Checked in"
+
+    with open("employee_status.json", "w") as f:
+        json.dump(statuses, f, indent=4)
+
+    with open("logs.txt", "a") as f:
+        f.write(f"{get_formatted_time()} | {log} | {employee}\n")
+    playsound.playsound("allow.wav", block=False)
+
+    return message
 
 def get_formatted_time():
     # Get current time
@@ -12,11 +36,6 @@ def get_formatted_time():
     # Format the time
     formatted_time = now.strftime("%m/%d/%Y | %I:%M %p")
     return formatted_time
-
-def welcome(name, code):
-    with open("logs.txt", "a") as f:
-        f.write(f"{get_formatted_time()} | ALLOWED | {name} | CODE: {code}\n")
-    playsound.playsound("allow.wav", block=False)
 
 def denied(code):
     with open("logs.txt", "a") as f:
@@ -51,7 +70,7 @@ def scan_qr_code_from_camera(data_dict):
             text_size = cv2.getTextSize("Ready to scan", cv2.FONT_HERSHEY_SIMPLEX, 2, 3)[0]
             text_x = (frame.shape[1] - text_size[0]) // 2
             text_y = 50
-            cv2.putText(frame, "Ready to scan", (text_x, text_y), cv2.FONT_HERSHEY_SIMPLEX, 2, (255, 0, 0), 5)
+            cv2.putText(frame, "Scan ID Here", (text_x, text_y), cv2.FONT_HERSHEY_SIMPLEX, 2, (255, 0, 0), 5)
 
             # Decode QR codes
             retval, decoded_info, decoded_idx, points = qr_detector.detectAndDecodeMulti(frame)
@@ -68,15 +87,15 @@ def scan_qr_code_from_camera(data_dict):
                     qr_code_processed_time = current_time  # Update the time when this QR code was processed
 
                     if last_valid_data in data_dict:
-                        message = f"WELCOME: {data_dict[last_valid_data]}"
+                        # message = f"WELCOME: {data_dict[last_valid_data]}"
                         frame[:] = (0, 255, 0)  # Green background
-                        welcome(data_dict[last_valid_data], last_valid_data)  # Call the welcome function
+                        message = change_status(data_dict[last_valid_data])  # Call the check in/ check out function
                     elif last_valid_data == "000-000-000-000":
                         message = "CLEARING CACHE..."
                         playsound.playsound("reset.mp3", False)
                         frame[:] = (255, 100, 50)  # Green background
                     else:
-                        message = "DENIED"
+                        message = "NOT AN EMPLOYEE"
                         frame[:] = (0, 0, 255)  # Red background
                         denied(last_valid_data)  # Call the denied function
 
@@ -87,7 +106,7 @@ def scan_qr_code_from_camera(data_dict):
                     cv2.putText(frame, message, (text_x, text_y), cv2.FONT_HERSHEY_SIMPLEX, 2, (0, 0, 0), 3)
 
             # Display the resulting frame
-            cv2.imshow('ID Scanner', frame)
+            cv2.imshow('Time Clock', frame)
 
             # Exit the loop with 'q' key
             # Handle key presses
