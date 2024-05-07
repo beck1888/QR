@@ -3,7 +3,7 @@ import json
 
 st.set_page_config("Employee tracker", page_icon='👤')
 
-with open('employee_status.json', 'r') as f:
+with open('data/employee_status.json', 'r') as f:
     statuses = dict(json.load(f))
 
     is_in = []
