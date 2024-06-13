@@ -1,8 +1,8 @@
 {
-    "Bob Smith": true,
-    "Alice Caldwell": true,
-    "Sarah Byrd": false,
-    "Blake Carter": false,
-    "Jake Rodgers": false,
-    "Sophie Walsh": false
+    "Bob Smith": false,
+    "Alice Caldwell": false,
+    "Sarah Byrd": true,
+    "Blake Carter": true,
+    "Jake Rodgers": true,
+    "Sophie Walsh": true
 }
