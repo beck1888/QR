@@ -4,6 +4,36 @@ from time import time
 import playsound
 import datetime
 
+# Settings
+run_tests = False
+
+if run_tests:
+    # Test systems
+    playsound.playsound("audio/boot1.mp3", block=True)
+    try: # Camera system test
+        cap = cv2.VideoCapture(0)
+        cap.release()
+        cv2.destroyAllWindows()
+    except Exception as e:
+        print(f"Error with CV: {e}")
+
+    # Sound test
+    playsound.playsound("audio/sound_test.mp3", block=True)
+    try:
+        playsound.playsound("audio/test_ok.mp3", block=True)
+        playsound.playsound("audio/allow.wav", block=True)
+
+        playsound.playsound("audio/test_fail.mp3", block=True)
+        playsound.playsound("audio/deny.wav", block=True)
+
+        playsound.playsound("audio/test_reboot.mp3", block=True)
+        playsound.playsound("audio/reset.mp3", block=True)
+    except Exception as e:
+        raise FileNotFoundError("A sound file was not found")
+    # Confirm system is ready
+    playsound.playsound("audio/done.mp3", block=True)
+
+
 def change_status(employee):
     # True = in
     # False = out
