@@ -163,3 +163,5 @@
 05/08/2024 | 07:10 PM | Checked in | Jake Rodgers
 06/12/2024 | 06:00 PM | Checked out | Jake Rodgers
 06/12/2024 | 06:01 PM | DENIED | ATTEMPTED CODE: 593-000-111-493
+06/12/2024 | 06:02 PM | DENIED | ATTEMPTED CODE: 593-000-111-493
+06/12/2024 | 06:02 PM | Checked in | Jake Rodgers

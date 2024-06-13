@@ -1,3 +1,6 @@
 data/employee_status.json
 data/logs.txt
 data
+data/
+employee_status.json
+logs.txt
