@@ -1,2 +1,3 @@
-employee_status.json
-logs.txt
+data/employee_status.json
+data/logs.txt
+data
